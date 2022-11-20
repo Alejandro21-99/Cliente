@@ -1,0 +1,62 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Eso es!</title>
+    </h:head>
+    <h:body>
+        <p:growl id="growl" globalOnly="true" showDetail="true"/>
+        <h:form id="formGuardarPersona">
+            <p:panel header="Registro de Personas">
+                <p:panelGrid columns="6" columnClasses="ui-grid-col-2">
+
+                    <h:outputText value="Primer Nombre"/>
+                    <p:inputText id="pNombre" value="#{baseBackbean.primerNombre}"/>
+
+                    <h:outputText value="Segundo Nombre"/>
+                    <p:inputText id="sNombre" value="#{baseBackbean.segundoNombre}"/>
+
+                    <h:outputText value="Primer Apellido"/>
+                    <p:inputText id="pApellido" value="#{baseBackbean.primerApellido}"/>
+
+                    <h:outputText value="Segundo Apellido"/>
+                    <p:inputText id="sApellido" value="#{baseBackbean.segundoApellido}"/>
+
+                </p:panelGrid>
+            </p:panel>
+            <p:commandButton id="btnGuardar" value="Guardar" update="formGuardarPersona formVerPersonas"
+                             actionListener="#{baseBackbean.guardar()}"/>
+        </h:form>
+
+        <h:form id="formVerPersonas">
+            <p:dataTable id="personas" var="p"
+                         value="#{baseBackbean.personaAPIS}"
+                         rowKey="#{p.id}"
+                         rows="10"
+                         paginatorPosition="top"
+                         paginator="true">
+                <f:facet name="header">
+                    Listado de personas (desde API)
+                </f:facet>
+
+                <p:column headerText="id Persona">
+                    <h:outputText value="#{p.id}"/>
+                </p:column>
+
+                <p:column headerText="Primer Nombre">
+                    <h:outputText value="#{p.primerNombre}"/>
+                </p:column>
+                <p:column headerText="Segundo Nombre">
+                    <h:outputText value="#{p.segundoNombre}"/>
+                </p:column>
+                <p:column headerText="Primer Apellido">
+                    <h:outputText value="#{p.primerApellido}"/>
+                </p:column>
+                <p:column headerText="SegundoApellido">
+                    <h:outputText value="#{p.SegundoApellido}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</f:view>
