@@ -18,7 +18,6 @@ public class ClienteApplication {
 		RestClient rest = new RestClient();
 
 		System.out.println(rest.getAllPersonas());
-		System.out.println(rest.getAllVehiculos());
 	}
 
 	@Bean

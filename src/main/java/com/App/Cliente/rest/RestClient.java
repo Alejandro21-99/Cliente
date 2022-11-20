@@ -24,25 +24,8 @@ public class RestClient {
     @Setter
     private HttpStatus status;
 
-
-    public String getAllVehiculos(){
-        String url = "http://localhost:8091/custom/vehiculo/todo";
-        String base64Creds = Base64.getEncoder().encodeToString(strAuth.getBytes());
-
-        httpHeaders.add("Authorization", "Basic " + base64Creds);
-        httpEntity = new HttpEntity(httpHeaders);
-
-        ResponseEntity<String> response = new RestTemplate().exchange(url, HttpMethod.GET, httpEntity , String.class);
-
-        // get JSON response
-        String json = response.getBody();
-
-        return json;
-
-    }
-
     public String getAllPersonas() {
-        String url = "http://localhost:8091/custom/persona/todo";
+        String url = "http://localhost:80/ejercicio/persona/todo";
 
         // create auth credentials
         String authStr = "1234:1234";
